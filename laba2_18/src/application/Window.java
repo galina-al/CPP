@@ -1,10 +1,5 @@
 package application;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;

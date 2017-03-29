@@ -1,11 +1,14 @@
 package application;
+
+import javafx.beans.property.SimpleStringProperty;
+
 /**
  * Класс "Деньги" хранит информацию о счетах клиентов
  * @author Галя
  *
  */
 public class Money {
-	public int sum;
+	public SimpleStringProperty sum = new SimpleStringProperty();
 	protected String owner_name;
 	/**
 	 * Класс "Деньги" хранит информацию о счетах клиентов
@@ -14,7 +17,7 @@ public class Money {
 	 *
 	 */
 	public Money(int sum, String owner_name) {
-		this.sum = sum;
+		this.sum.set(String.valueOf(sum));
 		this.owner_name = owner_name;
 	}
 

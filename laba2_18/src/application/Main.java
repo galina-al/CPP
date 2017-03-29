@@ -25,6 +25,7 @@ public class Main extends Application {
 	private Button buttonPoor;
 	private Button buttonStudent;
 	private Button buttonGiveMoney;
+	@SuppressWarnings("unused")
 	private Window win;
 	private ATM bank;
 	public static ObservableList<Client> listClient = FXCollections.observableArrayList();
@@ -35,6 +36,7 @@ public class Main extends Application {
 	/**
 	 * 
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void start(Stage stage) {
 		this.stage = stage;
@@ -99,6 +101,7 @@ public class Main extends Application {
 		scene1 = new Scene(pane, 400, 500);
 		stage.setScene(scene1);
 		stage.show();
+		
 	}
 
 	public static void main(String[] args) {

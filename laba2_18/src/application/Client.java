@@ -1,4 +1,7 @@
 package application;
+
+import javafx.beans.property.SimpleStringProperty;
+
 /**
  * Класс "Клиент" реализует действия клиента.
  * @author Галя
@@ -43,6 +46,14 @@ public class Client {
 	 * @return  Результат выполненной операции
 	 */
 	public String getMoney() {
-		return String.valueOf(money.sum);
+		return money.sum.get();
+	}
+
+	/**
+	 * Реализует действие "Вернуть сумму на счете клиента"
+	 * @return  Результат выполненной операции
+	 */
+	public SimpleStringProperty moneyProperty() {
+		return money.sum;
 	}
 }

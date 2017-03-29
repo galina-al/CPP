@@ -3,11 +3,10 @@ package application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -31,7 +30,7 @@ public class ATM {
 
 	public ATM() {
 		this.bank_name = "Belarusbank";
-		this.money = new Money(1000, this.bank_name);
+		this.money = new Money(2000, this.bank_name);
 	}
 
 	/**
@@ -39,16 +38,18 @@ public class ATM {
 	 * @param client клиент
 	 */
 	protected void GiveMoney(Client client) {
-		if (client.money.sum == 0) {
+		int sumCl = Integer.parseInt(client.money.sum.get());
+		int sumB = Integer.parseInt(this.money.sum.get());
+		if (sumCl == 0) {
 			Error.setTitle("Ты бомж!;(");
 			Error.setHeaderText(null);
 			Error.setContentText("Воу-воу-воу!\n"  + "Умерь свой пыл, сахарочек!\n" + "Твой кошелек не бескрайний.");
 			Error.showAndWait();
 			password.clear();
 		} else {
-			if (money.sum >= client.money.sum) {
-				money.sum -= client.money.sum;
-				client.money.sum = 0;
+			if (sumB >= sumCl) {
+				sumB -= sumCl;
+				sumCl = 0;
 				Inf.setTitle("Проверка пароля");
 				Inf.setHeaderText(null);
 				Inf.setContentText("Пароль прошел проверку." + "\n\n" + "Поздравляем, вы сняли деньги со счета!");
@@ -62,6 +63,8 @@ public class ATM {
 				password.clear();
 			}
 		}
+		client.money.sum.set(String.valueOf(sumCl));
+		this.money.sum.set(String.valueOf(sumB));
 	}
 
 	/**
